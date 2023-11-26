@@ -260,13 +260,17 @@ if [[ "$option" == "setup" ]]; then
       setopt notify
       setopt promptsubst
 
+      chsh -s $(which zsh)
+
       # Install starship prompt
       echo "kali" | sudo -S curl -sS https://starship.rs/install.sh | sh -s -- -y
       sleep 2
 
       # Install basic tools
-      sudo -S <<< "kali" apt install -y zsh-autosuggestions dos2unix python3 tmux asciinema golang sshuttle neofetch zsh git software-properties-common powershell nmap ltrace lsof strace tshark tcpdump exiftool rpm man-db upx-ucl nfs-common cifs-utils rdesktop ncat netcat-traditional wfuzz sqlmap dnsenum enum4linux nikto nbtscan-unixwiz smbmap linux-exploit-suggester exploitdb binwalk sshuttle john hydra wordlists sshpass jq openssl morse hashid 2to3 mcrypt bsdgames morse2ascii seclists curl feroxbuster impacket-scripts onesixtyone oscanner redis-tools smbclient sslscan tnscmd10g whatweb wkhtmltopdf ffuf gobuster gcc gpg ripgrep fd-find screen powershell-empire starkiller feroxbuster netcat-openbsd metasploit-framework armitage koadic mingw-w64 freerdp2-shadow-x11 freerdp2-x11 snapd remmina ruby evil-winrm feroxbuster shellter evilginx2 chisel
+      sudo -S <<< "kali" apt install --yes --quiet --option Dpkg::Options::=--force-confold --option Dpkg::Options::=--force-confdef --option Dpkg::Options::=--force-confnew zsh-autosuggestions dos2unix python3 tmux asciinema golang sshuttle neofetch zsh git software-properties-common powershell nmap ltrace lsof strace tcpdump exiftool rpm man-db upx-ucl nfs-common cifs-utils rdesktop ncat netcat-traditional wfuzz sqlmap dnsenum enum4linux nikto nbtscan-unixwiz smbmap linux-exploit-suggester exploitdb binwalk sshuttle john hydra wordlists sshpass jq openssl morse hashid 2to3 mcrypt bsdgames morse2ascii seclists curl feroxbuster impacket-scripts onesixtyone oscanner redis-tools smbclient sslscan tnscmd10g whatweb wkhtmltopdf ffuf gobuster gcc gpg fd-find screen powershell-empire starkiller feroxbuster netcat-openbsd metasploit-framework armitage koadic mingw-w64 freerdp2-shadow-x11 freerdp2-x11 snapd remmina ruby evil-winrm feroxbuster shellter evilginx2 chisel
       sleep 2
+
+      sudo -S <<< "kali" apt install --yes --quiet --option Dpkg::Options::=--force-confold --option Dpkg::Options::=--force-confdef --option Dpkg::Options::=--force-confnew tshark
 
       # Install sliver c2
       sudo -S <<< "kali" apt install -y sliver
@@ -692,8 +696,6 @@ if [[ "$option" == "setup" ]]; then
       fi
 
     fi
-
-    chsh -s $(which zsh)
 
     # Turn off debugging mode
     set +xv
