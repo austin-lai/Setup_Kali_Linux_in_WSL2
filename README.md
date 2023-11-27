@@ -387,6 +387,8 @@ if [[ "$option" == "setup" ]]; then
 
       echo -e "\nHISTSIZE=9999\nSAVEHIST=9999\n\nalias nc.tra=/usr/bin/nc.traditional\nalias nc.bsd=/usr/bin/nc.openbsd\nalias screenrec=\"asciinema rec --stdin -i 1 ./\$(date +\"%F_%T_%z\").cast\"\nalias kali_desktop=\"cd /home/kali/Desktop\"\nalias root_desktop=\"cd /root\"\n\nsource ~/.config/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh\n\nsource ~/.config/zsh-autocomplete/zsh-autocomplete.plugin.zsh\n\nexport STARSHIP_CONFIG=~/.config/pastel-powerline.toml\n\n" >> /home/kali/.zshrc
 
+      echo -e 'source ~/kali-linux-wsl-zsh.sh' >> /home/kali.zshrc
+
       # Check the content of /home/kali/.zshrc
       echo ""
       cat /home/kali/.zshrc
@@ -398,6 +400,47 @@ if [[ "$option" == "setup" ]]; then
       echo ""
       cat /home/kali/.tmux.conf
       echo ""
+
+      
+
+      # Define the directory containing the kali-linux-wsl-zsh.sh
+      kali_linux_wsl_zsh_directory="/mnt/c/austin-tools/"
+
+      # Store the find command in a variable
+      source_kali_linux_wsl_zsh=$(find "${kali_linux_wsl_zsh_directory}" -maxdepth 1 -type f -name "*kali-linux-wsl-zsh*" -print)
+
+      # Check if the variable is not empty
+      if [ -n "$source_kali_linux_wsl_zsh" ]; then
+
+          echo -e "\nkali-linux-wsl-zsh.sh found:"
+          echo -e "\n$source_kali_linux_wsl_zsh"
+
+          # Copy the kali-linux-wsl-zsh.sh to kali user 
+          cp -iv "${kali_linux_wsl_zsh_directory}"/kali-linux-wsl-zsh.sh /home/kali/kali-linux-wsl-zsh.sh
+
+          echo -e "\nkali-linux-wsl-zsh.sh copied successfully."
+
+          # Check the content of /home/kali/kali-linux-wsl-zsh.sh
+          echo ""
+          cat /home/kali/kali-linux-wsl-zsh.sh
+          echo ""
+          
+
+          # Copy the kali-linux-wsl-zsh.sh to root user
+          sudo -S <<< "kali" cp -iv "${kali_linux_wsl_zsh_directory}"/kali-linux-wsl-zsh.sh /root/kali-linux-wsl-zsh.sh
+
+          echo -e "\nkali-linux-wsl-zsh.sh copied successfully."
+
+          # Check the content of /root/kali-linux-wsl-zsh.sh
+          echo ""
+          sudo -S <<< "kali" cat /root/kali-linux-wsl-zsh.sh
+          echo ""
+
+      else
+          echo -e "\nkali-linux-wsl-zsh.sh files NOT found !!!"
+      fi
+
+
 
       echo -e "\n !!! MANUALLY COPY THE BELOW TO /home/kali/.config/pastel-powerline.toml !!! \n"
       #########################################################################################
