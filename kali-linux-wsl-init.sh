@@ -299,6 +299,8 @@ if [[ "$option" == "setup" ]]; then
       echo -e '\neval "$(starship init zsh)"' >> /home/kali/.zshrc
       echo -e '\nexport PATH="$PATH:/home/kali/.cargo/bin"' >> /home/kali/.zshrc
 
+      echo -e 'source ~/wsl_zsh_init_script.sh' >> /home/kali.zshrc
+
       # Check the content of /home/kali/.zshrc 
       echo ""
       cat /home/kali/.zshrc
