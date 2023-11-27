@@ -119,7 +119,7 @@ john_result() {
 
 
 kali_hyper_v() {
-    ssh kali@kali-hyper-v -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" -p 22 -i "kali-hyper-v-id_rsa"
+    ssh kali@kali-hyper-v -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" -p 22 -i "/mnt/c/austin-tools/kali-hyper-v-id_rsa"
 }
 
 
