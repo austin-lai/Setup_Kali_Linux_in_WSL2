@@ -171,6 +171,7 @@ if [[ "$option" == "setup" ]]; then
       # sleep 2
       sudo -S <<< "kali" apt install -y cargo zsh
       
+      sleep 2
       setopt CORRECT
       setopt ALL_EXPORT
       setopt autocd
@@ -178,7 +179,8 @@ if [[ "$option" == "setup" ]]; then
       setopt magicequalsubst
       setopt notify
       setopt promptsubst
-
+      
+      sleep 2
       chsh -s $(which zsh)
 
       # Install starship prompt
