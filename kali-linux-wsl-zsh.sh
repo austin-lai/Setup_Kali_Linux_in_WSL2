@@ -270,7 +270,7 @@ nmap_full_max() {
     echo -n "Specify output filename (e.g., IP/FQDN): "
     read filename
 
-    sudo nmap -n --privileged --stats-every 15s -vvvvvv -Pn -p- -r -A -sCSV -O --version-all -T4 --max-parallelism 30 --max-rate 300 --reason --script=safe,default,discovery,version,vuln --append-output -oN "${filename}.nmap-full-max" $target
+    sudo nmap -n --privileged --stats-every 25s -vvvvvv -Pn -p- -r -A -sCSV -O --version-all -T4 --max-parallelism 30 --max-rate 300 --reason --script=safe,default,discovery,version,vuln --append-output -oN "${filename}.nmap-full-max" $target
 }
 
 
@@ -283,7 +283,7 @@ nmap_full_min() {
     echo -n "Specify output filename (e.g., IP/FQDN): "
     read filename
 
-    sudo nmap -n --privileged --stats-every 15s -vvvvvv -Pn -p- -r -A -sCSV -O --version-all -T4 --min-parallelism 30 --min-rate 300 --reason --script=safe,default,discovery,version,vuln --append-output -oN "${filename}.nmap-full-min" $target
+    sudo nmap -n --privileged --stats-every 25s -vvvvvv -Pn -p- -r -A -sCSV -O --version-all -T4 --min-parallelism 30 --min-rate 300 --reason --script=safe,default,discovery,version,vuln --append-output -oN "${filename}.nmap-full-min" $target
 }
 
 
@@ -296,7 +296,7 @@ nmap_full_no_script() {
     echo -n "Specify output filename (e.g., IP/FQDN): "
     read filename
 
-    sudo nmap -n --privileged --stats-every 15s -vvvvvv -Pn -p- -r -A -sCSV -O --version-all -T4 --min-parallelism 30 --min-rate 300 --reason --append-output -oN "${filename}.nmap-full-no-script" $target
+    sudo nmap -n --privileged --stats-every 25s -vvvvvv -Pn -p- -r -A -sCSV -O --version-all -T4 --min-parallelism 30 --min-rate 300 --reason --append-output -oN "${filename}.nmap-full-no-script" $target
 }
 
 
@@ -309,7 +309,7 @@ nmap_open() {
     echo -n "Specify output filename (e.g., IP/FQDN): "
     read filename
 
-    sudo nmap -n --privileged --stats-every 15s -vvvvvv -Pn -p- -r -open --append-output -oN "${filename}.nmap-open" $target
+    sudo nmap -n --privileged --stats-every 25s -vvvvvv -Pn -p- -r -open --append-output -oN "${filename}.nmap-open" $target
 }
 
 
@@ -322,7 +322,7 @@ nmap_ping() {
     echo -n "Specify output filename (e.g., IP/FQDN): "
     read filename
 
-    sudo nmap -n --privileged --stats-every 15s -vvvvvv -sn --append-output -oN "${filename}.nmap-ping" $target
+    sudo nmap -n --privileged --stats-every 25s -vvvvvv -sn --append-output -oN "${filename}.nmap-ping" $target
 }
 
 
