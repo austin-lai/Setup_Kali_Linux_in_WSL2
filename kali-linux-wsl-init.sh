@@ -293,6 +293,9 @@ if [[ "$option" == "setup" ]]; then
       sudo -S <<< "kali" sed -i.bak 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
       sudo -S <<< "kali" systemctl restart ssh.service
 
+      # Enable privileged for nmap
+      sudo -S <<< "kali" setcap cap_net_raw,cap_net_admin=eip /usr/bin/nmap
+
       # Backup /home/kali/.zshrc
       cp -v /home/kali/.zshrc /home/kali/.zshrc.$current_date.bak
       
